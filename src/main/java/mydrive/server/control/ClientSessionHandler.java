@@ -104,8 +104,8 @@ public final class ClientSessionHandler extends ChannelInboundHandlerAdapter {
     private void handleSyncPlan(ChannelHandlerContext ctx, ProtocolFrame frame) throws Exception {
         SyncPlanMessage plan = ProtocolFrameUtil.readPayload(frame, SyncPlanMessage.class);
         syncId = plan.syncId();
-        syncSessionRegistry.attachControl(syncId, ctx, frame.requestId());
         syncSessionRegistry.setExpectedFiles(syncId, plan.totalFilesToSend());
+        syncSessionRegistry.attachControl(syncId, ctx, frame.requestId());
         log.info("conn={} remote={} syncId={} SYNC_PLAN expectedFiles={} bytes={} parallel={}",
                 connectionId(ctx), remote(ctx), syncId, plan.totalFilesToSend(), plan.totalBytesToSend(), plan.parallelConnections());
     }
