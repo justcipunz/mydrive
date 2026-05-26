@@ -37,8 +37,8 @@ build/
 ### Mac OS ###
 .DS_Store
 
-storage/
-metrics/
+/storage/
+/metrics/
 .mydrive-client-id
 client-data/.client-id
 *.pcap
